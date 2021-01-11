@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row justify-content-lg-center">
+        <div class="col-md-12 col-lg-8">
+            <h3 class="pt-5 pb-4 text-white text-left">| sign up form</h3>
+            <div class="card" style="width:100%;">
+                <div class="card-body">
+                    <form [formGroup]="userRegform" (ngSubmit)="reg_user()">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="mb-3">
+                                    <label for="userFirstname" class="form-label">First Name</label>
+                                    <input type="text" formControlName="userFirstname" class="form-control" id="userFirstname" placeholder="First Name">
+                                    <div *ngIf="form_controls.userFirstname.touched && form_controls.userFirstname.invalid" class="alert alert-danger">
+                                        <div *ngIf="form_controls.userFirstname.errors.required">First Name is required.</div>
+                                        <div *ngIf="form_controls.userFirstname.errors.pattern">Fist Name should contain only letters</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="mb-3">
+                                    <label for="userLastname" class="form-label">Last Name</label>
+                                    <input type="text" formControlName="userLastname" class="form-control" id="userLastname" placeholder="Last Name">
+                                    <div *ngIf="form_controls.userLastname.touched && form_controls.userLastname.invalid" class="alert alert-danger">
+                                        <div *ngIf="form_controls.userLastname.errors.required">Last Name is required.</div>
+                                        <div *ngIf="form_controls.userLastname.errors.pattern">Last Name should contain only letters</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="mb-3">
+                                    <label for="userDOB" class="form-label">Date of birth</label>
+                                    <input type="date" formControlName="userDOB" class="form-control" id="userDOB" [max]="maxDate | date: 'yyyy-MM-dd'" (change)="updateage()">
+                                    <div *ngIf="form_controls.userDOB.touched && form_controls.userDOB.invalid" class="alert alert-danger">
+                                        <div *ngIf="form_controls.userDOB.errors.required">Date of birth is required.</div>
+                                        <!-- <div *ngIf="f.userEmail.errors.email">Invalid Email</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <div class="mb-3">
+                                    <label for="userAge" class="form-label">Age</label>
+                                    <input type="number" formControlName="userAge" class="form-control" id="userAge" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email address</label>
+                            <input type="email" formControlName="userEmail" class="form-control" id="userEmail" placeholder="name@example.com">
+                            <div *ngIf="form_controls.userEmail.touched && form_controls.userEmail.invalid" class="alert alert-danger">
+                                <div *ngIf="form_controls.userEmail.errors.required">Email Name is required.</div>
+                                <div *ngIf="form_controls.userEmail.errors.email">Invalid Email</div>
+                            </div>
+                        </div>
+
+                        <div class="span" style="text-align:center">
+                            <!-- <button type="submit" mat-raised-button color="primary" style="width:50%;">Submit</button> -->
+                            <button type="submit" class="btn btn-primary" style="width:50%;" [disabled]="userRegform.invalid">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
